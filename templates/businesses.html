@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ThreeInThree - Search Result</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=font1|font2|etc' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<style type="text/css">
+
+.card {
+ overflow: hidden;
+ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+ -webkit-transition: .25s box-shadow;
+ transition: .25s box-shadow;
+ border-radius: none;
+ border: none;
+ margin-top: 10px;
+}
+.card:focus, .card:hover {
+ box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+body {background: url('https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?w=940&h=650&auto=compress&cs=tinysrgb') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+  }
+
+  .yelp-btn {
+    background-color: #D32323;
+  }
+
+  .card-footer a {
+    color: #fff;
+  }
+
+.btn-try {
+      margin-top: 30px;
+    margin-bottom: 30px;
+}
+  .btn-try a {
+    color: #fff;
+  }
+
+  .footer {
+    background-color: #fff;
+  height: 50px;
+color: #eee;
+  }
+
+</style>
+  
+  </head>
+  <body>
+
+<nav class="navbar-fixed-top navbar-light bg-faded">
+  <div class="container">
+    <a class="navbar-brand" href="/">ThreeInThree</a> - Find the top three cheap eats within three miles of your location!
+  </div>
+</nav>
+
+<div class="container">
+  <div class="card-deck">
+  {% for business in businesses %}
+  <div class="card animated fadeInLeft">
+    <img class="card-img-top" style="max-height: 200px" src="{{ business['image_url'] }}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{ business['name'] }}</h4>
+      <hr>
+      <p class="card-text">
+      {% for address in business['location']['display_address'] %}
+    <address>{{ address }}</address>
+    {% endfor %}
+      </p>
+      <p>{{ business['display_phone'] }}</p>
+    <p><strong>Rating:</strong> {{ business['rating'] }}</p>
+    </div>
+    <div class="card-footer yelp-btn">
+      <small class="text-muted"><a href="{{ business['url'] }}">View in Yelp</a></small>
+    </div>
+  </div>
+  {% endfor %}
+  
+</div>
+<div class="container">
+  <div class="row">
+  <div class="col-md-12 text-center">
+<button type="button" class="btn btn-lg btn-primary btn-try"><a href="/">Try another search</a></button>
+</div>
+</div>
+</div>
+</div>
+
+
+    <footer class="footer">
+      <div class="container">
+      <p></p>
+      <p></p>
+        <p class="text-muted">Made with <3 by <a href="https://www.linkedin.com/in/rosemariele/">SeeRoCode</a></p>
+      </div>
+    </footer>
+
+  </body>
+</html>
