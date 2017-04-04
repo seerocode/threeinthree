@@ -5,7 +5,8 @@ My idea is to create a web application to get the top three restaurants/place th
 I made this web app in Python and used Flask as the back-end framework.
 
 ## Links:
-Link: threeinthree.herokuapp.com
+Link: https://threeinthree.herokuapp.com
+
 Github: https://github.com/seerocode/threeinthree
 
 ## Future Improvements
