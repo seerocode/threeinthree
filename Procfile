@@ -1,2 +1,2 @@
 web: python app.py
-web: gunicorn app.wsgi
+web: gunicorn app:app --preload
