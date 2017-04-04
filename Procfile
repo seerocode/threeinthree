@@ -1,2 +1,2 @@
 web: python app.py
-web gunicorn manage:app
+web: gunicorn app.wsgi
