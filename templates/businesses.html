@@ -92,6 +92,23 @@ color: #eee;
       <small class="text-muted"><a href="{{ business['url'] }}">View in Yelp</a></small>
     </div>
   </div>
+  <div>
+    {% with %}
+
+    {% set location=({{ business['location']['latitude']}},{{ business['location']['longitude']}}) %}
+    {% set style="width:500px;height:500px;"%}
+
+    {{
+    googlemap(
+        "simple-map",
+        location.0, location.1,
+        markers=[location,],
+        style=style
+        )
+    }}
+
+{% endwith %}
+  </div>
   {% endfor %}
   
 </div>
