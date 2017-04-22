@@ -23,7 +23,7 @@ app = Flask(__name__)
 
 # Configs
 CLIENT_ID = 'hBxDGC2CF_hFV37kiAEZQA'
-CLIENT_SECRET = 'S2ke8JedL2ClXe3i1HihIYb4YuHlgIMfQ7E8fP4AAVB1jOpVra5M6HOQIha1lFTg'
+CLIENT_SECRET = ''
 
 ########################
 
