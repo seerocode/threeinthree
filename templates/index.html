@@ -49,8 +49,8 @@ function success(position){
   geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) { 
             var userZipCode = results[0].address_components.postal_code;
-//             document.getElementbyId("#user_location").value = userZipCode;
-            $("#user_location").val(userZipCode);
+            document.getElementbyId("#user_location").value = userZipCode;
+//             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }});  
   console.log(results[0].address_components.postal_code); };
   
