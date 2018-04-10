@@ -40,7 +40,7 @@
 //     centerMap(_userLat, _userLng);    
 // };
   
-function success() {
+function success(position) {
 //   alert("Thanks for accepting geolocation! :)");
   win();
   console.log("success");
@@ -54,7 +54,7 @@ function error() {
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
 // geocoder = new google.maps.Geocoder(); 
 
-function win(position){ 
+function(position){ 
     userLat= position.coords.latitude; 
     userLong= position.coords.longitude; 
     var geocoder = new google.maps.Geocoder();
