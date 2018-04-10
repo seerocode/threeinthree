@@ -114,58 +114,6 @@ function getLocation() {
   </body>
   
 <script>
-  // function askGeolocation(){  
-//     // check if browser support geolocation
-//     if (navigator.geolocation) {
-//         // ask permission and take positions    
-//         navigator.geolocation.getCurrentPosition(setLatLong);
-//     } else { 
-//         alert("Geolocation is not supported by your browser.");
-//     }
-// };
-
-// function setLatLong(position){  
-//     alert('Thanks for accepting geolocation! :)');
-
-//     // save position
-//     _userLat = position.coords.latitude;
-//     _userLng = position.coords.longitude;
-
-//     // we will check this function later
-//     centerMap(_userLat, _userLng);    
-// };
-  
-function extractFromAddress(components, type){
-    for (var i=0; i<components.length; i++)
-        for (var j=0; j<components[i].types.length; j++)
-            if (components[i].types[j]==type) return components[i].long_name;
-    return "";
-};
-  
-function success(position){  
-  var geocoder = new google.maps.Geocoder();
-  var mylat = position.coords.latitude; 
-  var mylng = position.coords.longitude; 
-  var latlng = new google.maps.LatLng(mylat, mylng); 
-
-  geocoder.geocode({'latLng': latlng}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) { 
-            var userZipCode = results[0].address_components.postal_code;
-          console.log(userZipCode);
-//           var userZipCode = extractFromAddress(results[0].address_components, "postal_code");
-//             document.getElementById("#user_location").value = postal_code;
-//             $("#user_location").val(userZipCode);
-            alert("The user's zipcode is "+ results[0]); }});  
-  console.log("success"); };
-  
-function error(e){
-  alert("GPS Failed");
-};
-
-navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
-</script>
-  
-<script>
 $(function() {
     if(navigator.geolocation) {
         var fallback = setTimeout(function() { fail('10 seconds expired'); }, 10000);
@@ -178,8 +126,7 @@ $(function() {
                     if(status == google.maps.GeocoderStatus.OK && typeof res[0] !== 'undefined') {
                         var zip = res[0].formatted_address.match(/,\s\w{2}\s(\d{5})/);
                         if(zip) {
-//                             $("._res").html('Zip code is ' +  zip[1]);
-                          alert("zip is " + zip[1]);
+                            $("#user_location").val(zip[1]);
                         } else fail('Failed to parse');
                     } else {
                         fail('Failed to reverse');
@@ -190,13 +137,11 @@ $(function() {
             }
         );
     } else {
-//         $("._res").html('Geolocation unsupported!');
-      alert("error");
+        $("#user_location").val('Geolocation is unsupported');
     }
     function fail(err) {
         console.log('err', err);
-//         $("._res").html('Error ' + err);
-      alert("zip is error");
+        alert('Error ' + err);
     }
   });
   </script>
