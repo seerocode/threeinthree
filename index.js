@@ -1,20 +1,20 @@
-function getLocationConstant() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-        } else {
-            alert("Your browser or device doesn't support Geolocation");
-        }
+function askGeolocation(){  
+    // check if browser support geolocation
+    if (navigator.geolocation) {
+        // ask permission and take positions    
+        navigator.geolocation.getCurrentPosition(setLatLong);
+    } else { 
+        alert("Geolocation is not supported by your browser.");
     }
+};
 
-    // If we have a successful location update
-    function onGeoSuccess(event) {
-        document.getElementById("Latitude").value = event.coords.latitude;
-        document.getElementById("Longitude").value = event.coords.longitude;
-        document.getElementById("Position1").value = event.coords.latitude + ", " + event.coords.longitude;
+function setLatLong(position){  
+    alert('Thanks for accepting geolocation! :)');
 
-    }
+    // save position
+    _userLat = position.coords.latitude;
+    _userLng = position.coords.longitude;
 
-    // If something has gone wrong with the geolocation request
-    function onGeoError(event) {
-        alert("Error code " + event.code + ". " + event.message);
-    }
+    // we will check this function later
+    centerMap(_userLat, _userLng);    
+};
