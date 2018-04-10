@@ -144,9 +144,11 @@ function extractFromAddress(components, type){
   
 function success(position){  
   var geocoder = new google.maps.Geocoder();
-  mylat=position.coords.latitude; 
-  mylng=position.coords.longitude; 
+  var mylat = position.coords.latitude; 
+  var mylng = position.coords.longitude; 
   var latlng = new google.maps.LatLng(mylat, mylng); 
+  console.log(mylat);
+  console.log(latlng);
   geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) { 
 //             var userZipCode = results[0].address_components.postal_code;
@@ -159,6 +161,8 @@ function success(position){
 function error(e){
   alert("GPS Failed");
 };
+  
+  
 
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
 
