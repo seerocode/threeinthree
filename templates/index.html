@@ -42,10 +42,12 @@
   
 function success() {
 //   alert("Thanks for accepting geolocation! :)");
+  return win;
   console.log("success");
 }
   
 function error() {
+  return fail;
   alert("Geolocation is not supported by your browser.");
 }
 
@@ -60,6 +62,7 @@ var win= function(position){
     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
         if (status == google.maps.GeocoderStatus.OK) { 
             var userZipCode = results[0].address_components.postal_code;
+//             document.getElementbyId("#user_location").value = userZipCode;
             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }}); }; 
             
