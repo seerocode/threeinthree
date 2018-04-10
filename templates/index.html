@@ -17,7 +17,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAn0pSQYUBCnxm-SrHjHSDZ6n7M_UJiojs"></script>
-    <script type="text/javascript" src="geolocate.js"></script>
 
 
 <style type="text/css">
@@ -41,27 +40,6 @@ color: #eee;
   }
 
 </style>
-<!-- 
-<script type="text/javascript">
-  var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */    
-
-function getLocation() {       
-    if( geo ) {    
-        geo.getCurrentPosition( displayLocation );       
-           } 
-           else  { alert( "Oops, Geolocation API is not supported");        
-           }     
-}         
-
-/*     This function displays the latitude and longitude when the browser has a location.     */   
-
-    function displayLocation( position ) {         
-        var latitude = position.coords.latitude;        
-        var longitude = position.coords.longitude;            
-        var div = document.get_three.user_location;     
-        div = latitude + ", " + longitude;    
-                                } 
-</script> -->
   
   </head>
   <body>
@@ -112,4 +90,39 @@ function getLocation() {
  </div>
 
   </body>
+  
+  <script>
+    $(function() {
+    if(navigator.geolocation) {
+        var fallback = setTimeout(function() { fail('10 seconds expired'); }, 10000);
+        navigator.geolocation.getCurrentPosition(
+            function (pos) {
+                clearTimeout(fallback);
+                console.log('pos', pos);
+                var point = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                new google.maps.Geocoder().geocode({'latLng': point}, function (res, status) {
+                    if(status == google.maps.GeocoderStatus.OK && typeof res[0] !== 'undefined') {
+                        var zip = res[0].formatted_address.match(/,\s\w{2}\s(\d{5})/);
+                        if(zip) {
+                            $("#user_location").val(zip[1]);
+                        } else fail('Failed to parse');
+                    } else {
+                        fail('Failed to reverse');
+                    }
+                });
+            }, function(err) {
+                fail(err.message);
+            }
+        );
+    } else {
+        $("#user_location").val('Geolocation is unsupported');
+    }
+    function fail(err) {
+        console.log('err', err);
+        alert('Error ' + err);
+    }
+  });
+  </script>
+  
 </html>
+
