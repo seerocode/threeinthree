@@ -63,6 +63,7 @@ var win= function(position){
         if (status == google.maps.GeocoderStatus.OK) { 
             userZipCode = results[0].address_components.postal_code;
             alert("The user's zipcode is "+ userZipCode); }}); }; 
+            $("#user_location").val(userZipCode);
 var fail= function(e){alert("GPS Failed");}; 
 </script>
 
