@@ -52,11 +52,11 @@ function success(position){
             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }}); }; 
   console.log("success");
-}
+};
   
 function error(e){
   alert("GPS Failed");
-}
+};
 
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
 
