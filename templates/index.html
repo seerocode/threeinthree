@@ -161,24 +161,8 @@ function success(position){
 function error(e){
   alert("GPS Failed");
 };
-  
-  
 
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
-
-// function(position){ 
-//     userLat= position.coords.latitude; 
-//     userLong= position.coords.longitude; 
-//     var geocoder = new google.maps.Geocoder();
-//     var userLatLong = new google.maps.userLatLng(userLat, userLong); 
-//     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
-//         if (status == google.maps.GeocoderStatus.OK) { 
-//             var userZipCode = results[0].address_components.postal_code;
-// //             document.getElementbyId("#user_location").value = userZipCode;
-//             $("#user_location").val(userZipCode);
-//             alert("The user's zipcode is "+ userZipCode); }}); }; 
-            
-// function fail(e){alert("GPS Failed");}; 
 </script>
   
 <script>
@@ -213,6 +197,6 @@ $(function() {
         console.log('err', err);
 //         $("._res").html('Error ' + err);
       alert("zip is error");
-    }
+    };
   </script>
 </html>
