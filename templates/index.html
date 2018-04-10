@@ -42,7 +42,6 @@
   
 function success() {
   alert("Thanks for accepting geolocation! :)");
-  console.log(position.coords.latitude, position.coords.longitude);
 }
   
 function error() {
@@ -56,12 +55,10 @@ var win= function(position){
     userLat= position.coords.latitude; 
     userLong= position.coords.longitude; 
     var geocoder = new google.maps.Geocoder();
-    var userZipCode = "";
-  
     var userLatLong = new google.maps.userLatLng(userLat, userLong); 
     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
         if (status == google.maps.GeocoderStatus.OK) { 
-            userZipCode = results[0].address_components.postal_code;
+            var userZipCode = results[0].address_components.postal_code;
             alert("The user's zipcode is "+ userZipCode); }}); }; 
             $("#user_location").val(userZipCode);
 var fail= function(e){alert("GPS Failed");}; 
