@@ -42,19 +42,19 @@
   
 function success() {
 //   alert("Thanks for accepting geolocation! :)");
-  return win;
+  win();
   console.log("success");
 }
   
 function error() {
-  return fail;
+  fail();
   alert("Geolocation is not supported by your browser.");
 }
 
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
 // geocoder = new google.maps.Geocoder(); 
 
-var win= function(position){ 
+function win(position){ 
     userLat= position.coords.latitude; 
     userLong= position.coords.longitude; 
     var geocoder = new google.maps.Geocoder();
@@ -66,7 +66,7 @@ var win= function(position){
             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }}); }; 
             
-var fail= function(e){alert("GPS Failed");}; 
+function fail(e){alert("GPS Failed");}; 
 </script>
 
 <style type="text/css">
