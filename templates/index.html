@@ -39,6 +39,14 @@
 //     // we will check this function later
 //     centerMap(_userLat, _userLng);    
 // };
+  
+function success() {
+  alert("success");
+}
+  
+function error() {
+  alert("error");
+}
 
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
 geocoder = new google.maps.Geocoder(); 
