@@ -40,7 +40,7 @@
 //     centerMap(_userLat, _userLng);    
 // };
 
-navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000})
+navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
 geocoder = new google.maps.Geocoder(); 
 
 var win= function(position){ 
