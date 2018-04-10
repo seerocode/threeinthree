@@ -41,11 +41,12 @@
 // };
   
 function success(position){  
-  userLat= position.coords.latitude; 
-  userLong= position.coords.longitude; 
+  
   var geocoder = new google.maps.Geocoder();
-  var userLatLong = new google.maps.LatLng(userLat, userLong); 
-    geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
+  mylat=position.coords.latitude; 
+  mylng=position.coords.longitude; 
+  var latlng = new google.maps.LatLng(mylat, mylng); 
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) { 
             var userZipCode = results[0].address_components.postal_code;
 //             document.getElementbyId("#user_location").value = userZipCode;
