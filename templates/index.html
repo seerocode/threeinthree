@@ -41,23 +41,28 @@
 // };
   
 function success() {
-  alert("success");
+  alert("Thanks for accepting geolocation! :)");
+  console.log(position.coords.latitude, position.coords.longitude);
 }
   
 function error() {
-  alert("error");
+  alert("Geolocation is not supported by your browser.");
 }
 
 navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
-geocoder = new google.maps.Geocoder(); 
+// geocoder = new google.maps.Geocoder(); 
 
 var win= function(position){ 
     userLat= position.coords.latitude; 
     userLong= position.coords.longitude; 
+    var geocoder = new google.maps.Geocoder();
+    var userZipCode = "";
+  
     var userLatLong = new google.maps.userLatLng(userLat, userLong); 
     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
         if (status == google.maps.GeocoderStatus.OK) { 
-            alert("The user's zipcode is "+results[0].address_components.postal_code); }}); }; 
+            userZipCode = results[0].address_components.postal_code;
+            alert("The user's zipcode is "+ userZipCode); }}); }; 
 var fail= function(e){alert("GPS Failed");}; 
 </script>
 
