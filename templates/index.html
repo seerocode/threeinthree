@@ -52,7 +52,7 @@ function success(position){
 //             document.getElementbyId("#user_location").value = userZipCode;
             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }});  
-  console.log("success"); };
+  console.log(results[0].address_components.postal_code); };
   
 function error(e){
   alert("GPS Failed");
