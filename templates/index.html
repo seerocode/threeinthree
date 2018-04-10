@@ -49,10 +49,10 @@ function success(position){
   geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) { 
             var userZipCode = results[0].address_components.postal_code;
-            document.getElementbyId("#user_location").value = userZipCode;
+            document.getElementbyId("#user_location").value = "hi";
 //             $("#user_location").val(userZipCode);
-            alert("The user's zipcode is "+ userZipCode); }});  
-  console.log(results[0].address_components.postal_code); };
+            alert("The user's zipcode is "+ results[0].address_components.postal_codee); }});  
+  console.log("success"); };
   
 function error(e){
   alert("GPS Failed");
