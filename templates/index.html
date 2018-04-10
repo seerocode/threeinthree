@@ -60,8 +60,9 @@ var win= function(position){
     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
         if (status == google.maps.GeocoderStatus.OK) { 
             var userZipCode = results[0].address_components.postal_code;
-            alert("The user's zipcode is "+ userZipCode); }}); }; 
             $("#user_location").val(userZipCode);
+            alert("The user's zipcode is "+ userZipCode); }}); }; 
+            
 var fail= function(e){alert("GPS Failed");}; 
 </script>
 
