@@ -180,4 +180,40 @@ navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:tru
             
 // function fail(e){alert("GPS Failed");}; 
 </script>
+  
+<script>
+  <SCRIPT type="text/javascript">
+$(function() {
+    if(navigator.geolocation) {
+        var fallback = setTimeout(function() { fail('10 seconds expired'); }, 10000);
+        navigator.geolocation.getCurrentPosition(
+            function (pos) {
+                clearTimeout(fallback);
+                console.log('pos', pos);
+                var point = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                new google.maps.Geocoder().geocode({'latLng': point}, function (res, status) {
+                    if(status == google.maps.GeocoderStatus.OK && typeof res[0] !== 'undefined') {
+                        var zip = res[0].formatted_address.match(/,\s\w{2}\s(\d{5})/);
+                        if(zip) {
+//                             $("._res").html('Zip code is ' +  zip[1]);
+                          alert("zip is " + zip[1]);
+                        } else fail('Failed to parse');
+                    } else {
+                        fail('Failed to reverse');
+                    }
+                });
+            }, function(err) {
+                fail(err.message);
+            }
+        );
+    } else {
+//         $("._res").html('Geolocation unsupported!');
+      alert("error");
+    }
+    function fail(err) {
+        console.log('err', err);
+//         $("._res").html('Error ' + err);
+      alert("zip is error");
+    }
+  </script>
 </html>
