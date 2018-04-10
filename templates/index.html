@@ -18,69 +18,7 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAn0pSQYUBCnxm-SrHjHSDZ6n7M_UJiojs"></script>
     
-<script>
-  // function askGeolocation(){  
-//     // check if browser support geolocation
-//     if (navigator.geolocation) {
-//         // ask permission and take positions    
-//         navigator.geolocation.getCurrentPosition(setLatLong);
-//     } else { 
-//         alert("Geolocation is not supported by your browser.");
-//     }
-// };
 
-// function setLatLong(position){  
-//     alert('Thanks for accepting geolocation! :)');
-
-//     // save position
-//     _userLat = position.coords.latitude;
-//     _userLng = position.coords.longitude;
-
-//     // we will check this function later
-//     centerMap(_userLat, _userLng);    
-// };
-  
-function extractFromAddress(components, type){
-    for (var i=0; i<components.length; i++)
-        for (var j=0; j<components[i].types.length; j++)
-            if (components[i].types[j]==type) return components[i].long_name;
-    return "";
-};
-  
-function success(position){  
-  var geocoder = new google.maps.Geocoder();
-  mylat=position.coords.latitude; 
-  mylng=position.coords.longitude; 
-  var latlng = new google.maps.LatLng(mylat, mylng); 
-  geocoder.geocode({'latLng': latlng}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) { 
-//             var userZipCode = results[0].address_components.postal_code;
-          var userZipCode = extractFromAddress(results[0].address_components, "postal_code");
-            document.getElementById("#user_location").value = userZipCode;
-//             $("#user_location").val(userZipCode);
-            alert("The user's zipcode is "+ userZipCode); }});  
-  console.log("success"); };
-  
-function error(e){
-  alert("GPS Failed");
-};
-
-navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
-
-// function(position){ 
-//     userLat= position.coords.latitude; 
-//     userLong= position.coords.longitude; 
-//     var geocoder = new google.maps.Geocoder();
-//     var userLatLong = new google.maps.userLatLng(userLat, userLong); 
-//     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
-//         if (status == google.maps.GeocoderStatus.OK) { 
-//             var userZipCode = results[0].address_components.postal_code;
-// //             document.getElementbyId("#user_location").value = userZipCode;
-//             $("#user_location").val(userZipCode);
-//             alert("The user's zipcode is "+ userZipCode); }}); }; 
-            
-// function fail(e){alert("GPS Failed");}; 
-</script>
 
 <style type="text/css">
 
@@ -174,4 +112,68 @@ function getLocation() {
  </div>
 
   </body>
+  
+<script>
+  // function askGeolocation(){  
+//     // check if browser support geolocation
+//     if (navigator.geolocation) {
+//         // ask permission and take positions    
+//         navigator.geolocation.getCurrentPosition(setLatLong);
+//     } else { 
+//         alert("Geolocation is not supported by your browser.");
+//     }
+// };
+
+// function setLatLong(position){  
+//     alert('Thanks for accepting geolocation! :)');
+
+//     // save position
+//     _userLat = position.coords.latitude;
+//     _userLng = position.coords.longitude;
+
+//     // we will check this function later
+//     centerMap(_userLat, _userLng);    
+// };
+  
+function extractFromAddress(components, type){
+    for (var i=0; i<components.length; i++)
+        for (var j=0; j<components[i].types.length; j++)
+            if (components[i].types[j]==type) return components[i].long_name;
+    return "";
+};
+  
+function success(position){  
+  var geocoder = new google.maps.Geocoder();
+  mylat=position.coords.latitude; 
+  mylng=position.coords.longitude; 
+  var latlng = new google.maps.LatLng(mylat, mylng); 
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) { 
+//             var userZipCode = results[0].address_components.postal_code;
+          var userZipCode = extractFromAddress(results[0].address_components, "postal_code");
+            document.getElementById("#user_location").value = userZipCode;
+//             $("#user_location").val(userZipCode);
+            alert("The user's zipcode is "+ userZipCode); }});  
+  console.log("success"); };
+  
+function error(e){
+  alert("GPS Failed");
+};
+
+navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy:true,maximumAge:600000, timeout:10000});
+
+// function(position){ 
+//     userLat= position.coords.latitude; 
+//     userLong= position.coords.longitude; 
+//     var geocoder = new google.maps.Geocoder();
+//     var userLatLong = new google.maps.userLatLng(userLat, userLong); 
+//     geocoder.geocode({'userLatLong': userLatLong}, function(results, status) { 
+//         if (status == google.maps.GeocoderStatus.OK) { 
+//             var userZipCode = results[0].address_components.postal_code;
+// //             document.getElementbyId("#user_location").value = userZipCode;
+//             $("#user_location").val(userZipCode);
+//             alert("The user's zipcode is "+ userZipCode); }}); }; 
+            
+// function fail(e){alert("GPS Failed");}; 
+</script>
 </html>
