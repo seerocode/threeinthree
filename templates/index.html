@@ -50,9 +50,8 @@ function success(position){
             var userZipCode = results[0].address_components.postal_code;
 //             document.getElementbyId("#user_location").value = userZipCode;
             $("#user_location").val(userZipCode);
-            alert("The user's zipcode is "+ userZipCode); }}); }; 
-  console.log("success");
-};
+            alert("The user's zipcode is "+ userZipCode); }});  
+  console.log("success"); };
   
 function error(e){
   alert("GPS Failed");
