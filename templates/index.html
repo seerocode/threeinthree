@@ -142,15 +142,6 @@ function extractFromAddress(components, type){
     return "";
 };
   
-function extractFromObject (object, key) {
-   return object.filter((object) => component.types.indexOf(key) 
-   === 0).map((item)=>item.long_name).pop() || null;
-};
-  
-var jsonData = {} //object contains data returned from reverseGeocode API
-var city = extractFromObject(jsonData.json.results[0].address_components, 'locality');
-console.log(city); //Output is Toronto
-  
 function success(position){  
   var geocoder = new google.maps.Geocoder();
   mylat=position.coords.latitude; 
@@ -158,9 +149,15 @@ function success(position){
   var latlng = new google.maps.LatLng(mylat, mylng); 
   geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) { 
-            var userZipCode = results[0].address_components.postal_code;
+//             var userZipCode = results[0].address_components.postal_code;
 //           var userZipCode = extractFromAddress(results[0].address_components, "postal_code");
-            document.getElementById("#user_location").value = userZipCode;
+          
+          const place = autocomplete.getPlace();
+const address_components = place["address_components"] || [];
+const postal_code = extractFromAddress("postal_code");
+  console.log(postal_code);
+          
+            document.getElementById("#user_location").value = postal_code;
 //             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }});  
   console.log("success"); };
