@@ -56,7 +56,7 @@ function success(position){
         if (status == google.maps.GeocoderStatus.OK) { 
 //             var userZipCode = results[0].address_components.postal_code;
           var userZipCode = extractFromAddress(results[0].address_components, "postal_code");
-            document.getElementbyId("#user_location").value = "hi";
+            document.getElementById("#user_location").value = "hi";
 //             $("#user_location").val(userZipCode);
             alert("The user's zipcode is "+ userZipCode); }});  
   console.log("success"); };
