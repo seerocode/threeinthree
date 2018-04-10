@@ -7,6 +7,7 @@ import pprint
 import requests
 import sys
 import urllib
+import config
 
 try:
     # For Python 3.0 and later
@@ -22,8 +23,8 @@ except ImportError:
 app = Flask(__name__)
 
 # Configs
-CLIENT_ID = 'hBxDGC2CF_hFV37kiAEZQA'
-CLIENT_SECRET = ''
+CLIENT_ID = config.CLIENT_ID
+CLIENT_SECRET = config.CLIENT_SECRET
 
 ########################
 
