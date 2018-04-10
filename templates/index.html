@@ -147,11 +147,11 @@ function success(position){
   var mylat = position.coords.latitude; 
   var mylng = position.coords.longitude; 
   var latlng = new google.maps.LatLng(mylat, mylng); 
-  console.log(mylat);
-  console.log(latlng);
+
   geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) { 
-//             var userZipCode = results[0].address_components.postal_code;
+            var userZipCode = results[0].address_components.postal_code;
+          console.log(userZipCode);
 //           var userZipCode = extractFromAddress(results[0].address_components, "postal_code");
 //             document.getElementById("#user_location").value = postal_code;
 //             $("#user_location").val(userZipCode);
