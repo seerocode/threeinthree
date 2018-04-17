@@ -69,6 +69,7 @@ color: #eee;
 <nav class="navbar-fixed-top navbar-light bg-faded">
   <div class="container">
     <a class="navbar-brand" href="/">ThreeInThree</a> - Find the top three cheap eats within three miles of your location!
+    <!-- {businesses} -->
   </div>
 </nav>
 
@@ -91,23 +92,6 @@ color: #eee;
     <div class="card-footer yelp-btn">
       <small class="text-muted"><a href="{{ business['url'] }}">View in Yelp</a></small>
     </div>
-  </div>
-  <div>
-    {% with %}
-
-    {% set location=({{ business['location']['latitude']}},{{ business['location']['longitude']}}) %}
-    {% set style="width:500px;height:500px;"%}
-
-    {{
-    googlemap(
-        "simple-map",
-        location.0, location.1,
-        markers=[location,],
-        style=style
-        )
-    }}
-
-{% endwith %}
   </div>
   {% endfor %}
   
