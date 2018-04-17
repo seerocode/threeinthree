@@ -2,7 +2,7 @@
 
 My idea is to create a web application to get the top three restaurants/place that are open now and are within a three-mile radius of a specified location. I made this because I don't like having to look through too many restaurants and seeing just the top 3 is all I need. Also, making sure that they're open because I always find myself disappointed when I forget to check the "open now" flag in Yelp. 
 
-I made this web app in Python and used Flask as the back-end framework.
+I made this web app in Python and used Flask as the back-end framework. App autodeploys to heroku on push to master.
 
 ## Links:
 Link: https://threeinthree.herokuapp.com
